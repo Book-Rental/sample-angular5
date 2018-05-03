@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+
+  <a class="navbar-brand" routerLink="/">Book Rental</a>
+
+  <ul class="navbar-nav">
+
+    <li ngbDropdown  class="nav-item dropdown" >
+      <a ngbDropdownToggle class="nav-link dropdown-toggle"  id="usersDropDownLink" data-toggle="dropdown" 
+       aria-haspopup="true" aria-expanded="false">
+       Users
+      </a>
+      <div ngbDropdownMenu  class="dropdown-menu" aria-labelledby="usersDropDownLink">
+        <a class="dropdown-item" routerLink="/users">View Users</a>
+        <a class="dropdown-item" routerLink="/users/new">Add New</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="#">Books</a>
+    </li>
+
+    <li ngbDropdown  class="nav-item dropdown" >
+      <a ngbDropdownToggle class="nav-link dropdown-toggle"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" 
+       aria-haspopup="true" aria-expanded="false">
+       Rentals
+      </a>
+      <div ngbDropdownMenu  class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="#">Save Data</a>
+        <a class="dropdown-item" href="#">Fetch Data</a>
+      </div>
+    </li>
+  </ul>
+</nav>

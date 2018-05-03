@@ -1,0 +1,103 @@
+<div *ngIf="user">
+
+    <div class="row">
+        <div class="float-left" *ngIf="mode=='edit'">
+            <h4>Edit User ID#{{user.id}}</h4>
+        </div>
+
+        <div class="float-left" *ngIf="mode=='view'">
+            <h4>View User ID#{{user.id}}</h4>
+        </div>
+
+        <div class="float-left" *ngIf="mode=='new'">
+            <h4>New User</h4>
+        </div>
+
+        <div class="float-right">
+            <button class="btn btn-default btn-sm " type="button" (click)="back()">
+                <span class="fa fa-reply"></span> Back
+            </button>
+            <button type="button" class="btn btn-default btn-sm" type="submit" data-toggle="modal" data-target="#deleteModal" *ngIf="mode=='view'"
+                Style="padding-right:10px">
+                <span class="glyphicon glyphicon-remove"></span> Remove
+            </button>
+            <button type="button" class="btn btn-default btn-sm" Style="padding-right:10px" (click)="edit()" *ngIf="mode=='view'">
+                <span class="glyphicon glyphicon-edit"></span> Edit
+            </button>
+            <button class="btn btn-default btn-sm" Style="padding-right:10px" type="button" (click)="cancel()" *ngIf="mode=='edit'">
+                Cancel
+            </button>
+            <button class="btn btn-default btn-sm" Style="padding-right:10px" type="button" (click)="reset()" *ngIf="mode=='edit' || mode=='new'">
+                Reset
+            </button>
+            <button class="btn btn-default btn-sm" Style="padding-right:10px" type="submit" form="userForm" *ngIf="mode=='edit' || mode=='new'">
+                <span class="fa fa-floppy-o"></span> Save
+            </button>
+        </div>
+    </div>
+
+    <hr>
+
+    <form *ngIf="mode === 'edit' || mode === 'new'" id="userForm" (ngSubmit)="save()">
+
+        <div class="row">
+            <div class="form-group  col col-md-6">
+                <div class="col-md-8">
+                    <mat-form-field>
+                        <input matInput type="text" name="firstName" id="firstName" placeholder="First Name" [(ngModel)]="user.firstName" autocomplete="off"
+                        required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-group  col col-md-6">
+                <div class="col-md-8">
+                    <mat-form-field>
+                        <input matInput type="text" name="lastName" id="lastName" placeholder="Last Name" [(ngModel)]="user.lastName" autocomplete="off"
+                        required>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group  col col-md-6">
+                <div class="col-md-8">
+                    <mat-form-field>
+                        <input matInput type="email" name="email" id="email" placeholder="Email" [(ngModel)]="user.email" autocomplete="off"
+                        required>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <div *ngIf="mode === 'view'">
+
+        <div class="row">
+            <div class="form-group required col col-md-6">
+                <label class="control-label col-md-4" for="firstName">First Name</label>
+                <div class="col-md-8">
+                    {{user.firstName}}
+                </div>
+            </div>
+            <div class="form-group required col col-md-6">
+                <label class="control-label col-md-4" for="lastName">Last Name</label>
+                <div class="col-md-8">
+                    {{user.lastName}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group required col col-md-6">
+                <label class="control-label col-md-4" for="email">Email</label>
+                <div class="col-md-8">
+                    {{user.email}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
